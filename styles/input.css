@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Dosis';
+    font-style: normal;
+    font-weight: normal;
+    src: url(../assets/font/Dosis-Regular.otf) format('opentype');
+}
+
+
+@layer base {
+    * {
+        @apply select-none;
+    }
+
+    h1, h2, h3, h4, h5, h6, p, button {
+        @apply font-dosis;
+    }
+
+    p {
+        @apply text-3xl text-white;
+    }
+
+    button {
+        @apply w-72 py-6 text-xl text-blue font-bold bg-white rounded-lg cursor-pointer;
+    }
+
+    .center {
+        @apply flex items-center flex-col;
+    }
+
+    .board {
+        @apply max-w-full max-h-[83vh] aspect-square grid;
+        grid-template-columns: repeat(15, minmax(0, 1fr));
+        background-image: url("../assets/img/board_background.svg");
+        
+        .board-box {
+            @apply flex items-center justify-center w-wfa aspect-square cursor-pointer;
+
+            img {
+                @apply size-5/6;
+            }
+        }
+    }
+
+    .win-back {
+        @apply absolute overflow-hidden;
+    }
+
+    .win-back-x::before {
+        @apply absolute size-32;
+        content: "";
+        bottom: -35px;
+        right: -45px;
+        z-index: 1;
+        background: url("../assets/img/x.svg") 0 0 no-repeat;
+        transform: rotate(15deg);
+    }
+
+    .win-back-o::before {
+        @apply absolute size-32;
+        content: "";
+        bottom: -40px;
+        right: -45px;
+        z-index: 1;
+        background: url("../assets/img/o.svg") 0 0 no-repeat;
+        transform: rotate(15deg);
+    }
+
+    .win-back-draw::before {
+        @apply absolute size-32;
+        content: "";
+        bottom: -35px;
+        right: -45px;
+        z-index: 1;
+        background: url("../assets/img/x.svg") 0 0 no-repeat;
+        transform: rotate(15deg);
+        bottom: -35px;
+        right: -45px;
+        filter: grayscale(100%);
+    }
+
+    .highlight {
+        @apply text-lg text-red cursor-pointer;
+    }
+}
